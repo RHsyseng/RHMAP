@@ -1,0 +1,29 @@
+<ion-view view-title="Favorites">
+    <ion-nav-bar align-title="center" class="bar-stable">
+    </ion-nav-bar>
+    <ion-content class="padding" ng-hide="logged_in">
+        <h6 class="cart empty">Log in to view your favorites! Redirecting...</h6>
+    </ion-content>
+    <ion-content class="padding" ng-show="logged_in">
+        <h4 class="cart empty" ng-show="favorites.list.length === 0">No Favorites Found</h4>
+        <h5 class="cart empty" ng-show="favorites.list.length > 0">Your Favorites<span ng-show="favorites.list.length > 5"> (showing 5 of {{favorites.list.length}})</span>:</h5>
+        <ion-list>
+            <ion-item class="item item-avatar item-remove-animate item-icon-left"
+                      ng-repeat="product in favorites.list | limitTo: 5"
+                      type="item-text-wrap">
+                <img ng-src="img/{{product.image}}.jpg">
+                <div>
+                    <span class="cart-item-text cart-item-name">{{product.name}}</span>
+                    <br/>
+                    <span class="cart-item-text">{{product.description}}</span>
+                </div>
+                <div >
+                    <span class="item-note">{{product.price | currency }}</span>
+                </div>
+                <ion-option-button class="button-assertive" ng-click="favorites.remove(product)">
+                    Remove
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,151 @@
+* {
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+#body{
+  position:relative;
+}
+.page{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+}
+.hidden{
+  display:none;
+}
+#header{
+  padding:20px;
+  background:#ccc;
+}
+
+#header .title{
+  font-size:22px;
+}
+
+#monitorlist ul{
+  list-style:none;
+  margin:0;
+  max-width:1400px;
+  margin:0 auto;
+  padding:0;
+}
+#monitorlist ul li{
+  padding-top:8px;
+  padding-bottom:8px;
+  height:50px;
+}
+
+#monitorlist ul li>div{
+  float:left;
+  padding-left:15px;
+  padding-right:15px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#monitorlist .col_updown{
+  text-align:center;
+}
+#monitorlist .col_updown{
+  width:80px;
+}
+#monitorlist .col_checkname{
+  width:400px;
+}
+#monitorlist .col_checktype{
+  width:50px;
+}
+#monitorlist .col_checkuptime{
+  width:100px;
+}
+#monitorlist .col_checkupratio{
+  width:100px;
+}
+#monitorlist .monitorlist_row .col_tool{
+  font-size:1.5em;
+}
+#monitorlist .monitorlist_row .col_tool>span{
+  color:#2859AD;
+  cursor:pointer;
+  padding-left:5px;
+  padding-right:5px;
+  text-shadow: 1px 1px 2px #424242;
+}
+#monitorlist .monitorlist_row .col_tool>.check_remove{
+  color:#F51D1D;
+}
+#monitorlist .monitorlist_row:nth-child(even){
+  background:#efefef;
+}
+#monitorlist .monitorlist_row .col_updown{
+  text-align:center;
+  font-size:25px;
+}
+#monitorlist .monitorlist_row .checkname{
+  font-weight:bold;
+  font-size:1.1em;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+#monitorlist .monitorlist_row .description{
+  font-size:0.9em;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.check_modal #config_panel{
+  padding:15px;
+}
+#monitorlist .check_run.running{
+-webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.status_up{
+  color:#28C946;
+}
+.status_down{
+  color:#C92828;
+}
+
+.run_row:hover{
+  color:blue;
+  cursor:pointer;
+}
+div.text-container{
+    margin: auto;
+    width: 960px;
+}
+
+div.text-container h3{
+    text-decoration: underline;
+    color: rgb(52, 52, 52);
+}
+div.text-container h4{
+    text-decoration: underline;
+    color: rgb(86, 86, 86);
+    margin-left: 10px;
+
+}
+div.text-container p, div.text-container ul li, div.text-container ol li{
+    color: rgb(120, 120, 120);
+    margin-left: 20px;
+}
+div.text-container p em, div.text-container ul li em, div.text-container ol li em{
+    font-style: normal;
+    font-weight: 700;
+    color: rgb(33, 33, 33);
+}

@@ -1,0 +1,19 @@
+<ion-view view-title="Products">
+    <ion-nav-bar align-title="center" class="bar-stable">
+    </ion-nav-bar>
+    <ion-content class="padding">
+        <ion-list>
+            <ion-item
+                    class="item-avatar item-icon-right"
+                    ng-repeat="product in products.all | orderBy: 'name'"
+                    type="item-text-wrap"
+                    ui-sref="tab.products-detail({sku: product.sku})">
+
+                <img ng-src="img/{{product.image}}.jpg">
+                <h2>{{product.name}}</h2>
+                {{product.description}}
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

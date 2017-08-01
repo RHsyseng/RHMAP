@@ -1,0 +1,30 @@
+<div style="padding:20px;"> 
+  <h3><small><a href="#">Home</a> / <a href="#check/<%=checkObj._id%>">List</a></small>  Check Result: <%=checkObj.name %> <small><%=startDate%></small></h3>
+  <div>
+    <b><label>Result:</label></b>
+    <span class="label label-<%= isSuccessful?"success":"danger" %>"><%= isSuccessful?"Passed":"Failed" %> </span>
+  </div>
+  <div>
+    <b><label>Fail Reason: </label><%= typeof (failReason)!="undefined"?failReason:"N/A" %></b>
+  </div>
+  <div>
+    <b>Start Date: </b>
+    <%=startDate %>
+  </div>
+  <div>
+    <b>End Date: </b>
+    <%=endDate %>
+  </div>
+  <div class="form-group">
+    <label>Response</label>
+    <textarea class="form-control">
+      <%=typeof response=="undefined" ? "N/A":response %>
+    </textarea>
+  </div>
+  <div class="form-group">
+    <label>Check</label>
+    <textarea class="form-control">
+      <%=JSON.stringify(checkObj) %>
+    </textarea>
+  </div>
+</div>

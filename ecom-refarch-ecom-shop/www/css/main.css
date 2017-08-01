@@ -1,0 +1,212 @@
+body {
+    /*    width: 640px;
+    height: 1136px;*/
+    font-family: OS-Light;
+}
+
+#app {
+    width: inherit;
+    height: inherit;
+}
+
+#example {
+    width: 80%;
+    height: 470px;
+    position: absolute;
+    top: 11%;
+    left: 10%;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.center > h3 {
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-family: OS-Light;
+    font-size: 1.5em;
+    text-align: center;
+    width: 100%;
+    display: inline;
+}
+
+.center > h4 {
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-family: OS-Light;
+    font-size: 1.0em;
+    text-align: center;
+    width: 100%;
+    display: inline;
+}
+
+.center > h3 > small {
+    color: #ffffff;
+    letter-spacing: 2px;
+    font-family: OS-Light;
+}
+
+.header-footer-bg {
+    background-color: #7ea1b6;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5%;
+    color: #ffffff;
+}
+
+footer > div > small {
+    padding-top: 8px;
+    padding-right: 10px;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.center {
+    text-align: center;
+    width: 100%;
+    margin-top: 5px;
+}
+
+/*
+ *  CUSTOM STYLING
+ */
+
+#description {
+    text-align: justify;
+    position: relative;
+    padding-top: 20%;
+    padding-bottom: 10%;
+}
+
+.input-group {
+    display: block;
+}
+
+img.featured {
+    width: 160px;
+    margin-top: 25px;
+}
+
+img.productDetail {
+    width: 200px;
+}
+
+ul.productDetails {
+    list-style: square inside;
+}
+
+.cart-item-text {
+    margin-left: 10px;
+}
+
+.item.item-body.featured {
+    padding: 0;
+    height: 250px;
+}
+
+.featured > .slider > .slider-pager {
+    height: 1px;
+}
+
+.slider {
+    height: 240px;
+}
+
+.cart-item-text {
+    padding-left: 20px;
+}
+
+.bar-footer {
+    bottom: 25px;
+}
+
+.bar-footer.total {
+    height: 35px;
+}
+
+.total.number {
+    float: right;
+    padding: 0 30px 10px 0;
+}
+
+.button.checkout {
+    float: right;
+}
+
+.spinner svg {
+    width: 32px;
+    height: 32px;
+    stroke: white;
+    fill: #444;
+}
+
+#products-detail-footer .button {
+    padding: 0;
+    height: 47px;
+    font-size: 16px;
+}
+
+#products-detail-footer .dualButton {
+    padding: 0;
+    height: 47px;
+    width: 200px;
+    font-size: 16px;
+}
+
+#account-detail-footer .button {
+    padding: 0;
+    height: 47px;
+    font-size: 16px;
+}
+
+.cart-item-text {
+    padding-left: 10px;
+}
+
+.cart-item-name {
+    font-weight: bold;
+}
+
+#android #product-details-footer {
+    bottom: 25px;
+}
+
+.bar-footer.has-tabs {
+    bottom: 70px;
+}
+
+.portal-container {
+    min-width: 600px;
+    max-width: 900px;
+    text-align: center;
+    background-color: #ccc;
+}
+
+.portal-content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+button.favorite {
+    margin-top: 5px;
+}

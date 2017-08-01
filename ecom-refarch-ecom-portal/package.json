@@ -1,0 +1,40 @@
+{
+  "name": "ecom-portal",
+  "private": true,
+  "version": "0.1.0",
+  "main": "application.js",
+  "scripts": {
+    "install": "./node_modules/grunt-cli/bin/grunt browserify",
+    "start": "node application.js"
+  },
+  "dependencies": {
+    "angular": "~1.6.4",
+    "angular-animate": "~1.6.4",
+    "angular-resource": "~1.6.4",
+    "angular-route": "~1.6.4",
+    "angular-sanitize": "~1.6.4",
+    "angular-ui-bootstrap": "~2.5.0",
+    "angular-ui-router": "~0.3.2",
+    "browserify": "~13.3.0",
+    "browserify-shim": "~3.8.13",
+    "cors": "2.8.3",
+    "express": "4.15.3",
+    "fh-js-sdk": "~2.18.5",
+    "grunt": "~0.4.5",
+    "grunt-browserify": "~5.0.0",
+    "grunt-cli": "~1.2.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-connect": "~0.7.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-newer": "~0.5.4",
+    "grunt-rev": "~0.1.0",
+    "load-grunt-tasks": "~0.2.1",
+    "moment": "^2.14.1",
+    "time-grunt": "~0.2.10"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title ng-bind="title">Ionic Ecommerce Frontend Showcase</title>
+    <style>
+        preview {
+            display: block;
+            max-width: 855px;
+            margin: 0 auto 0 auto;
+            overflow: auto;
+        }
+
+        h2 {
+            color: #fff;
+            font-weight: 200;
+            letter-spacing: 1px;
+            margin: 8px;
+        }
+
+        h2 a {
+            font-family: Arial;
+            font-size: 12px;
+            color: #999;
+            text-decoration: none;
+        }
+
+        h2 a:hover {
+            font-weight: bold;
+        }
+
+        .phone {
+            float: left;
+            margin: 50px 10px 0 10px;
+            text-align: center;
+        }
+
+        .frame {
+            border: 1px solid #aaa;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.9);
+            width: 375px;
+            height: 667px;
+        }
+    </style>
+
+    <!-- quick and dirty templating, don't touch this -->
+    <script>
+        var BOOTSTRAP = {"appName": "ionic-ecommerce"};
+    </script>
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script>
+        angular.module('app', [])
+            .directive('preview', function () {
+                return {
+                    restrict: 'E',
+                    scope: true,
+                    link: function ($scope, $element, $attr) {
+                        $scope.screenSizes = [
+                            {label: 'iPhone 5 (320x568)', size: '320x568'}
+                        ];
+                        $scope.screenSize = $scope.screenSizes[0];
+                    }
+                }
+            })
+            .run(['$rootScope', function ($rootScope) {
+                $rootScope.appName = BOOTSTRAP && BOOTSTRAP.appName || null;
+                $rootScope.title = $rootScope.appName && $rootScope.appName + ' - Ionic App' || 'Ionic App';
+            }]);
+    </script>
+
+</head>
+<body>
+<preview>
+    <div class="phone">
+        <div id="iphone">
+            <iframe id="iphone-frame" src="index.html?ionicplatform=ios" class="frame"></iframe>
+            <h2><a href="index.html?ionicplatform=ios" target="_blank">>> view as iOS <<</a></h2>
+        </div>
+    </div>
+    <div class="phone">
+        <div id="android">
+            <iframe id="android-frame" src="index.html?ionicplatform=android" class="frame"></iframe>
+            <h2><a href="index.html?ionicplatform=android" target="_blank">>> view as Android <<</a></h2>
+        </div>
+    </div>
+</preview>
+</body>
+</html>

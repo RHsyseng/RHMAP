@@ -1,0 +1,39 @@
+<ion-view view-title="Order Detail">
+    <ion-nav-bar align-title="center" class="bar-stable">
+        <ion-nav-back-button class="button-icon icon ion-ios7-arrow-back" ui-sref="tab.account">
+            &nbsp;&nbsp;List
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content class="padding">
+        <ion-list>
+            <ion-item class="item item-avatar item-remove-animate item-icon-left"
+                      ng-repeat="product in order.order.distinctProducts"
+                      type="item-text-wrap">
+                <img ng-src="img/{{product.image}}.jpg">
+                <div>
+                    <span class="cart-item-text cart-item-name">{{product.name}}</span>
+                    <br/>
+                    <span class="cart-item-text">{{product.description}}</span>
+                </div>
+                <div ng-show="product.count > 1">
+                    <span class="item-note">({{product.price | currency }} x {{product.count}}) {{product.price *
+                        product.count | currency }}</span>
+                </div>
+                <div ng-hide="product.count > 1">
+                    <span class="item-note">{{product.price | currency }}</span>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-footer-bar align-title="center" class="bar total" ng-show="order.order && order.order.total > 0">
+        <div class="row">
+            <div class="col">
+                <h4 class="total">Total {{order.order.total |
+                    currency}}</h4>
+            </div>
+            <div class="col">
+                <h4 class="total">{{order.order.transactionDate | date: 'short'}}</h4>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

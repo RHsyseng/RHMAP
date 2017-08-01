@@ -1,0 +1,166 @@
+
+<div class="container">
+    <div class="row">
+        <div ng-cloak class="col-md-8 col-md-offset-2">
+
+            <div class="alert alert-danger" ng-show="account.error">{{account.error}}</div>
+
+            <div ng-hide="logged_in">
+                <div ng-hide="account.isRegister">
+                    <h1>Log In</h1>
+                    <div class="list-group">
+
+                        <div class="col-md-12">
+                            <form novalidate name="loginForm" class="form-horizontal payment-form">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Username</label>
+                                    <div class="col-md-8">
+                                        <input ng-model="account.user.username" name="username"
+                                               placeholder="Username" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Password</label>
+                                    <div class="col-md-8">
+                                        <input type="password" ng-model="account.user.password" name="password"
+                                               placeholder="Password" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group payment-buttons">
+                                    <div class="col-md-4 text-right">
+                                        <button class="btn btn-primary" ng-click="account.login(account.user)"
+                                                ng-disabled="loginForm.$invalid">Log In</button>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <button class="btn btn-danger" ng-click="account.isRegister = true">
+                                            Register New Account</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="account.isRegister">
+                    <h1>Register</h1>
+                    <div class="list-group">
+
+                        <div class="col-md-12">
+                            <form novalidate name="registerForm" class="form-horizontal payment-form">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Username</label>
+                                    <div class="col-md-8">
+                                        <input ng-model="account.user.username" name="username"
+                                               placeholder="Username" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Password</label>
+                                    <div class="col-md-8">
+                                        <input type="password" ng-model="account.user.password" name="password"
+                                               placeholder="Password" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Name</label>
+                                    <div class="col-md-8">
+                                        <input ng-model="account.user.name" name="name"
+                                               placeholder="First/Last Name" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Address</label>
+                                    <div class="col-md-8">
+                                        <input ng-model="account.user.address" name="address"
+                                               placeholder="Full Address" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Phone</label>
+                                    <div class="col-md-8">
+                                        <input type="tel" ng-model="account.user.telephone" name="telephone"
+                                               placeholder="e.g. 17195551212" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Email</label>
+                                    <div class="col-md-8">
+                                        <input type="email" ng-model="account.user.email" name="email"
+                                               placeholder="Email" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group payment-buttons">
+                                    <div class="col-md-4 text-right">
+                                        <button class="btn btn-primary" ng-click="account.register(account.user)"
+                                                ng-disabled="registerForm.$invalid">Register</button>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <button class="btn btn-danger" ng-click="account.isRegister = false">
+                                            Back to Log In</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div ng-show="logged_in">
+                <h1 class="cart empty" ng-show="user.orders.length === 0">No Orders Found</h1>
+                <h1 class="cart empty" ng-show="user.orders.length > 0">Recent Orders:</h1>
+
+                <div class="list-group">
+
+                    <div ng-repeat="order in user.orders | orderBy: '-transactionDate'">
+                    <a class="list-group-item featured-entry" ng-click="account.orderDetail(order)">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <h4>Order #{{order.transactionNumber}} - {{order.transactionDate | date:
+                                    'fullDate'}} {{order.transactionDate | date: 'shortTime'}}</h4>
+                                <p>Status: {{order.status}}<span
+                                        ng-show="account.order.show === {{order.transactionNumber}}">, Total:
+                                    {{account.order.total | currency }}</span></p>
+
+                                <div class="panel" ng-show="account.order.show === {{order.transactionNumber}}">
+
+                                    <div
+                                            ng-repeat="product in account.order.distinctProducts | orderBy: 'sku' track by product.sku"
+                                         class="list-group-item featured-entry">
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <img ng-src="img/{{product.image}}.jpg" class="featured">
+                                            </div>
+                                            <div class="col-md-5">
+                                                <h4>{{product.name}}</h4>
+                                                <p>{{product.description}}</p>
+                                                <ul>
+                                                    <li class="productDetails" ng-repeat="tagline in product.taglines">{{tagline}}</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-3 text-center">
+
+                                                <h5 ng-show="product.count > 1" class="price-tag">
+                                                    ({{product.price | currency }} x {{product.count}}) {{product.price * product.count |
+                                                    currency }}
+                                                </h5>
+                                                <h5 ng-hide="product.count > 1" class="price-tag">
+                                                    <span class="item-note">{{product.price | currency }}</span>
+                                                </h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

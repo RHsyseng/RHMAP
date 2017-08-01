@@ -1,0 +1,42 @@
+<div class="page">
+  <h3><small><a href="#">Home</a></small></h3>
+  <div class="text-container">
+    <h3>Add a New Check</h3>
+    <p>This feature is only available at /admin.</p>
+    <p>To create a new check the '<em>add new</em>' will then be enabled. Click on 'Add new' and then enter the following data:</p>
+    <ul>
+      <li><em>Check Name</em>: A name for your own reference</li>
+      <li><em>Description</em>: A description for your own reference</li>
+      <li><em>Interval</em>: How many minutes to wait between checks</li>
+      <li><em>Timeout</em>: How long to allow the service to respond, before considering it disconnected</li>
+      <li><em>Record Rotation</em>: How many days to store our logs of the responsiveness of the host</li>
+      <li><em>Check Type</em>: If the service is a website choose '<em>http(s)</em>' otherwise choose 'TCP'</li>
+    </ul>
+    <h4>TCP Options</h4>
+    <ul>
+      <li><em>Host</em>: The host to connect to.</li>
+      <li><em>Port</em>: The port to connect to.</li>
+    </ul>
+    <h4>HTTP(s) Options</h4>
+    <ul>
+      <li><em>Url</em>: The URL of the website to connect to (e.g. http://feedhenry.com or https://feedhenry.com)</li>
+      <li><em>Method</em>: GET or POST, pick whichever your application is expecting, if you're unsure, use GET</li>
+      <li><em>Send Body</em>: This is not required, but in a POST request you can specify the POST data to send</li>
+      <li><em>Response Regexp Check</em>: This is not required, you can enter a regex in here to verify the response is as expected.</li>
+    </ul>
+
+    <h3>Edit a Check</h3>
+    <p>This feature is only available at /admin.</p>
+    <p>To edit a check, click on the pencil icon next to it, on the main page, then edit the fields as required.</p>
+
+    <h3>Remove a Check</h3>
+    <p>This feature is only available at /admin.</p>
+    <p>To remove an existing check, click on the red X next to it, on the main page, then click 'OK'.</p>
+
+    <h3>View Alert History for a Check</h3>
+    <p>To view the alert history for a check, click the list icon, next to it, on the main page.</p>
+
+    <h3>Manually Run a Check</h3>
+    <p>To manually run a check, without having to wait for it's interval, you can click the 'play' icon beside it, on the main page.</p>
+  </div>
+</div>

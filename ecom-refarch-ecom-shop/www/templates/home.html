@@ -1,0 +1,45 @@
+<ion-view view-title="ECom RefArch App">
+    <ion-nav-bar align-title="center" class="bar-stable">
+    </ion-nav-bar>
+    <ion-content class="padding">
+        <div class="list card featured">
+            <div class="item item-divider">Featured Products</div>
+            <div class="item item-body featured">
+                <ion-slide-box does-continue="true" on-slide-changed="slideHasChanged($index)">
+                    <ion-slide ng-repeat="product in home.featured | orderBy: 'name'"
+                               ui-sref="tab.products-detail({sku: product.sku})">
+                        <div class="item-text-wrap">
+                            <div class="box featured row">
+                                <div class="col">
+                                    <img ng-src="img/{{product.image}}.jpg" class="featured">
+                                </div>
+                                <div class="col">
+                                    <h3>{{product.name}}</h3>
+                                    <h3>{{product.description}}</h3>
+                                    <h3>{{product.price | currency}}</h3>
+
+                                    <button class="button button-positive button-small" ng-hide="home.addedToCart"
+                                            ng-click="home.addToCart(product, $event)">&nbsp;Add to Cart&nbsp;</button>
+
+                                    <button class="button button-balanced button-small" ng-show="home.addedToCart">
+                                        <i class="icon ion-checkmark-round"></i>Product Added</button>
+
+                                    <button class="button button-positive button-small favorite"
+                                            ng-hide="!logged_in || product.addedToFavorites"
+                                            ng-click="home.addToFavorites(product, $event)">Favorite Item</button>
+
+                                    <button class="button button-balanced button-small favorite"
+                                            ng-show="logged_in && product.addedToFavorites">
+                                        <i class="icon ion-checkmark-round"></i>Product Added</button>
+                                </div>
+                            </div>
+                        </div>
+                    </ion-slide>
+                </ion-slide-box>
+            </div>
+        </div>
+        <a class="button button-block button-positive home" ui-sref="tab.products">
+            View All Products
+        </a>
+    </ion-content>
+</ion-view>

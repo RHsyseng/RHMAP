@@ -1,0 +1,4 @@
+<td><span class="<%= statusCls %>"> </span></td>
+<td> <%= startDate %> </td>
+<td> <%= (new Date(endDate) - new Date(startDate))+"ms" %> </td>
+<td> <%= typeof (failReason)!="undefined"?failReason:"N/A" %> </td>

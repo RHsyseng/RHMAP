@@ -1,0 +1,9 @@
+node_modules
+.DS_STORE
+*.sw?
+testresult
+.idea
+npm-debug.log
+*~
+cov-*
+plato

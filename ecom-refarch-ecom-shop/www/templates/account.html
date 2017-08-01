@@ -1,0 +1,91 @@
+<ion-view view-title="Account">
+    <ion-nav-bar align-title="center" class="bar-stable">
+    </ion-nav-bar>
+    <ion-content class="padding" ng-hide="logged_in">
+        <form novalidate class="simple-form" name="loginForm">
+            <div class="list list-inset" ng-hide="account.isRegister">
+                <label class="item item-input">
+                    <span class="input-label">Username</span>
+                    <input type="text" ng-model="account.user.username" name="username"
+                           placeholder="Username" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-model="account.user.password" name="password"
+                           placeholder="Password" required>
+                </label>
+
+                <button ng-hide="account.logged_in" class="button button-block button-positive" nav-transition="ios"
+                   ng-click="account.login(account.user)" ng-disabled="loginForm.$invalid">Log In</button>
+                <button ng-show="account.logged_in" class="button button-block button-positive" nav-transition="ios"
+                   ng-click="account.logout()">Log Out</button>
+                <button ng-hide="account.logged_in" class="button button-block button-positive" nav-transition="ios"
+                   ng-click="account.isRegister = true">Register New Account</button>
+            </div>
+        </form>
+
+        <form novalidate class="simple-form" name="registerForm">
+            <div class="list list-inset" ng-show="account.isRegister && !account.logged_in">
+                <label class="item item-input">
+                    <span class="input-label">Username</span>
+                    <input type="text" ng-model="account.user.username" name="username"
+                           placeholder="Username" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-model="account.user.password" name="password"
+                           placeholder="Password" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Name</span>
+                    <input type="text" ng-model="account.user.name" name="name"
+                           placeholder="First/Last Name" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Address</span>
+                    <input type="text" ng-model="account.user.address" name="address"
+                           placeholder="Full Address" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Phone</span>
+                    <input type="tel" ng-model="account.user.telephone" name="telephone"
+                           placeholder="e.g. 17195551212" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Email</span>
+                    <input type="email" ng-model="account.user.email" name="email"
+                           placeholder="Email" required>
+                </label>
+
+                <button class="button button-block button-positive" nav-transition="ios"
+                   ng-click="account.register(account.user)"
+                   ng-disabled="registerForm.$invalid">Register</button>
+                <button class="button button-block button-positive" nav-transition="ios"
+                   ng-click="account.isRegister = false">Back to Log In</button>
+            </div>
+        </form>
+    </ion-content>
+    <ion-content class="padding" ng-show="logged_in">
+        <ion-list>
+            <h4 class="cart empty" ng-show="user.orders.length === 0">No Orders Found</h4>
+            <h5 class="cart empty" ng-show="user.orders.length > 0">Recent Orders
+                <span ng-show="user.orders.length > 5"> (showing 5 of {{user.orders.length}})</span>:</h5>
+            <ion-item ng-show="user.orders.length > 0"
+                    class="item-icon-right"
+                    ng-repeat="order in user.orders | orderBy: '-transactionDate' | limitTo: 5"
+                    type="item-text-wrap"
+                    ui-sref="tab.order-detail({orderId: order.id})">
+
+                <h3>Order placed {{order.transactionDate | date: 'short'}}</h3>
+                Status: {{order.status}}
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </ion-item>
+        </ion-list>
+        <ion-footer-bar class="bar bar-clear product-details" id="account-detail-footer">
+            <button class="button button-block button-positive"
+                    ng-click="account.logout()">
+                Log out
+            </button>
+        </ion-footer-bar>
+    </ion-content>
+</ion-view>

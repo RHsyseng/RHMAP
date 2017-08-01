@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FeedHenry HMS</title>
+  <style> 
+{csslib}
+  </style>
+  <script>
+{jslib}
+{appfiles}
+  </script>
+  <script>
+  $(function(){
+    NProgress.start();
+    app.init(function(){
+      NProgress.done();
+    });
+  });
+  </script>
+</head>
+
+<body>
+<div id="header" class="clearfix">
+  <div class="title pull-left">Monitoring</div>
+  <div class="pull-right"><a href="#create" class="btn btn-primary">Add New</a></div>
+</div>
+<div id="body">
+</div>
+
+{templates}
+</body>
+</html>

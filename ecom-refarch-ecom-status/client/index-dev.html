@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<link rel="stylesheet" href="./css/nprogress.css"/>
+<link rel="stylesheet" href="./css/bootstrap.min.css"/>
+<link rel="stylesheet" href="./css/style.css"/>
+<script type="application/javascript" src="./js/jquery.1.11.1.min.js"></script>
+<script type="application/javascript" src="./js/bootstrap.js"></script>
+<script type="application/javascript" src="./js/underscore.js"></script>
+<script type="application/javascript" src="./js/backbone.js"></script>
+<script type="application/javascript" src="./js/nprogress.js"></script>
+
+
+<!-- Development Application scripts -->
+<script type="application/javascript" src="./app/app.js"></script>
+<script type="application/javascript" src="./app/route.js"></script>
+<script type="application/javascript" src="./app/msg.js"></script>
+<script type="application/javascript" src="./app/template.js"></script>
+<script type="application/javascript" src="./app/body.js"></script>
+
+<!--models -->
+<script type="application/javascript" src="./app/models/check.js"></script>
+<script type="application/javascript" src="./app/models/run.js"></script>
+
+<!--collections -->
+<script type="application/javascript" src="./app/collections/checks.js"></script>
+<script type="application/javascript" src="./app/collections/runs.js"></script>
+
+<!-- Views -->
+<script type="application/javascript" src="./app/views/checkList.js"></script>
+<script type="application/javascript" src="./app/views/check.js"></script>
+<script type="application/javascript" src="./app/views/createCheck.js"></script>
+<script type="application/javascript" src="./app/views/editCheck.js"></script>
+<script type="application/javascript" src="./app/views/runTable.js"></script>
+<script type="application/javascript" src="./app/views/runrow.js"></script>
+<script type="application/javascript" src="./app/views/runDetail.js"></script>
+<script type="application/javascript" src="./app/views/documentation.js"></script>
+
+<!-- routes -->
+<script type="application/javascript" src="./app/routes/rundetail.js"></script>
+<script>
+  $(function(){
+    NProgress.start();
+    app.init(function(){
+      NProgress.done();
+    });
+  });
+</script>
+</head>
+
+<body>
+<div id="header" class="clearfix">
+  <div class="title pull-left">Monitoring</div>
+  <div class="pull-right"><a href="#create" class="btn btn-primary">Add New</a></div>
+</div>
+<div id="body">
+</div>
+
+<!-- templates -->
+<script type="text/template" id="tmpl_monitorlist_row"> </script>
+<script type="text/template" id="tmpl_create_check"> </script>
+<script type="text/template" id="tmpl_monitorlist"> </script>
+<script type="text/template" id="tmpl_runlist"> </script>
+<script type="text/template" id="tmpl_run_row"> </script>
+<script type="text/template" id="tmpl_run"> </script>
+<script type="text/template" id="tmpl_documentation"> </script>
+</body>
+</html>

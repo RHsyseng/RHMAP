@@ -1,0 +1,116 @@
+<ion-view view-title="Cart">
+    <ion-nav-bar align-title="center" class="bar-stable">
+    </ion-nav-bar>
+    <ion-content class="padding" ng-show="!cart.isCheckout">
+        <h4 class="cart empty" ng-show="cart.distinctProducts.length === 0">Your Cart is Empty</h4>
+        <ion-list>
+            <ion-item class="item item-avatar item-remove-animate item-icon-left"
+                      ng-repeat="product in cart.distinctProducts | orderBy: 'cart_product_id' track by product.cart_product_id"
+                      type="item-text-wrap">
+                <img ng-src="img/{{product.image}}.jpg">
+                <div>
+                    <span class="cart-item-text cart-item-name">{{product.name}}</span>
+                    <br/>
+                    <span class="cart-item-text">{{product.description}}</span>
+                </div>
+                <div ng-show="product.count > 1">
+                    <span class="item-note">({{product.price | currency }} x {{product.count}}) {{product.price *
+                        product.count | currency }}</span>
+                </div>
+                <div ng-hide="product.count > 1">
+                    <span class="item-note">{{product.price | currency }}</span>
+                </div>
+                <ion-option-button class="button-assertive" ng-click="cart.remove(product)">
+                    Remove
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <ion-content class="padding" ng-show="cart.isCheckout && logged_in">
+        <form novalidate class="simple-form" name="paymentForm">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <span class="input-label">CC Number</span>
+                    <input type="text" ng-model="cart.payment.number" name="cardNumber"
+                           placeholder="16-digit number" required ng-pattern="/^[0-9]{16}$/">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Expiry Month</span>
+                    <input type="text" ng-model="cart.payment.month" name="cardMonth"
+                           placeholder="mm" required ng-pattern="/^[0-9]{2}$/">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Expiry Year</span>
+                    <input type="text" ng-model="cart.payment.year" name="cardYear"
+                           placeholder="yyyy" required ng-pattern="/^[0-9]{4}$/">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Card Pin</span>
+                    <input type="text" ng-model="cart.payment.pin" name="cardPin"
+                           placeholder="####" required ng-pattern="/^[0-9]{4}$/">
+                </label>
+                <button class="button button-block button-positive" nav-transition="ios"
+                        ng-click="cart.completeOrder()"
+                        ng-disabled="paymentForm.$invalid">Complete Order</button>
+
+                <button class="button button-block button-positive" nav-transition="ios"
+                        ng-click="cart.cancelCheckout()">Cancel</button>
+            </div>
+        </form>
+    </ion-content>
+    <ion-footer-bar ng-hide="!cart.isCheckout || cart.distinctProducts.length === 0 || logged_in"
+                    class="bar bar-clear product-details"
+                    id="products-detail-footer">
+        <button class="button button-block button-positive" ui-sref="tab.account">
+            Log In to Purchase
+        </button>
+    </ion-footer-bar>
+    <ion-footer-bar ng-show="!cart.isCheckout && cart.distinctProducts.length !== 0 && logged_in" align-title="center"
+                    class="bar total">
+        <div class="row">
+            <div class="col">
+                <h4 class="total">Total</h4>
+            </div>
+            <div class="col">
+                <h4 class="total number">{{cart.total | currency}}</h4>
+            </div>
+            <div class="col">
+                <div class="buttons" ng-click="cart.checkout()">
+                    <button class="buttons-stable button checkout">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </ion-footer-bar>
+    <ion-footer-bar ng-show="!cart.isCheckout && cart.distinctProducts.length !== 0 && !logged_in" align-title="center"
+                    class="bar total">
+        <div class="row">
+            <div class="col">
+                <h4 class="total">Total</h4>
+            </div>
+            <div class="col">
+                <h4 class="total number">{{cart.total | currency}}</h4>
+            </div>
+            <div class="col">
+                <div class="buttons" ui-sref="tab.account">
+                    <button class="buttons-stable button checkout">Log In</button>
+                </div>
+            </div>
+        </div>
+    </ion-footer-bar>
+        <ion-footer-bar ng-show="logged_in" align-title="center"
+                        class="bar total">
+            <div class="row">
+                <div class="col">
+                    <h4 class="total">Total</h4>
+                </div>
+                <div class="col">
+                    <h4 class="total number">{{cart.total | currency}}</h4>
+                </div>
+                <div class="col">
+                    <div class="buttons" ng-click="cart.checkout()" ng-show="!cart.isCheckout">
+                        <button class="buttons-stable button checkout">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </ion-footer-bar>
+</ion-view>
