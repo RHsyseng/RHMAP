@@ -1,8 +1,8 @@
 {
-  "appid": "yptmx7ae6p5icjqc2olvoder",
-  "appkey": "54f78044e7c2faa471f41a9a159b8ef5fade523",
+  "appid": "<app_id>",
+  "appkey": "<app_key>",
   "apptitle": "ecom-portal",
-  "connectiontag": "0.0.2",
-  "host": "https://app.rhmap.ocp.cloud.lab.eng.bos.redhat.com",
-  "projectid": "yptmx7dnjmc73bytnrvqjxke"
+  "connectiontag": "<connection_tag>",
+  "host": "<host>",
+  "projectid": "<project_id>"
 }
